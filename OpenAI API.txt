@@ -1,0 +1,36 @@
+# OPENAI API
+------------
+
+* Introduction
+--------------
+An Application Programming Interface (API) is an excellent way for developers to interact with third-party software easily. Data and functionality can be accessed by sending requests to 
+different API endpoints. Using APIs is a great way to expand your project’s scope and capabilities.
+
+The OpenAI API is no different because it is a portal into the world of large language models and brings generative AI into our code. Understanding this API is important when working with 
+generative AI in your code and projects.
+
+Generative AI applications like ChatGPT use large language models (LLMs). LLMs, in turn, are built using a technology known as Generative Pre-trained Transformer (and they are named after 
+it, hence GPT-4). A main driver of these models is the Neural Network. Based loosely on the human brain’s functionality, neural networks are trained on a large amount of data to reproduce 
+certain behaviors.
+
+While powerful and very effective, neural networks operate as a black box because their inner workings are a mystery to even the most highly-trained data scientists. This results in 
+unverifiable model output, where the input and outputs are always processed with a certain amount of randomness.
+
+This lesson will examine the OpenAI API and explain how to create more reliable, controlled outputs from LLMs. We will explore the API’s different generative AI tasks and model offerings, 
+examine the API request and response objects, and look at effectively creating input prompts to receive the desired text output. We will also look at controlling the output with 
+hyperparameters to counteract the model’s non-deterministic or random behavior.
+
+* Instructions
+--------------
+The GPT simulator on the right lets you input specific prompts and get a corresponding output. To do this, select a preset prompt by clicking the button labeled with the prompt text. 
+Then, press the triangle button to the right to submit it. If you wish to remove all output text, click the circular arrow button located next to the triangle button.
+
+Try submitting each prompt multiple times and observe the output.
+
+You’ll see that depending on the input prompt, the output might be less deterministic and differ with each submission. Using the API, you will learn how to gain some control of the output 
+based on the given input.
+
+When you’re done, move to the next exercise.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
