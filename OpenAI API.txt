@@ -34,3 +34,105 @@ When you’re done, move to the next exercise.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+* Endpoints
+-----------
+The OpenAI API can be used for text completion, image generation and modification, audio transcription, and more. Text completion, including code generation, is a popular use case for 
+large language models and is what we will focus on in this course.
+
+API endpoints are server locations where data can be sent and received using code or other means. OpenAI’s API has two endpoints that handle text completion: chat/completions and 
+completions. Let’s compare these two text completion endpoints.
+
+. chat/completions
+------------------
+
+The chat/completions endpoint generates text from a single prompt or defines a multi-prompt chat.
+
+The chat functionality allows us first to set the “behavior” of the chat replies, such as “You are to respond to 8th-grade social studies questions.” Once this is defined, the responses 
+will be on an 8th-grade social studies class level, and questions not involving social studies will potentially be rejected.
+
+Using this endpoint, we can also specify a small number of prompt/response examples to help guide future responses. This is known as few-shot prompting and can profoundly affect the 
+chat’s behavior.
+
+. completions
+-------------
+The completions endpoint produces a text completion output using a single input prompt. While this behavior is also available in the chat/completions, the completions endpoint does 
+provide more hyperparameters for tuning the model’s behavior which could be useful for some developers.
+
+However, despite offering those extra hyperparameters that aren’t available in chat/completions, the completions endpoint is not as useful overall since it only supports a single prompt 
+for completion and uses older LLMs that are less powerful and cost more.
+
+. Other Endpoints
+-----------------
+While we will be focusing on the chat/completions and completions endpoints in this course, it is good to know about some of the other endpoints accessible with the API:
+
+	. models: List the available models and corresponding data such as owner and permissions
+	. images: Create and edit images using a text prompt
+	. audio: Generate text from a given audio file
+	. moderations: Analyze text to see if it violates OpenAI’s content policy, which is useful when passing a user’s input through to the API
+
+. Instructions
+--------------
+Click the generative AI categories on the right to reveal the associated endpoint and description.
+
+- Chat and Text Completion Endpoint 
+-----------------------------------
+'chat/completions'
+
+Generates and completes text from a single prompt or defines a multi-prompt chat.
+
+- Text Completion Endpoint
+--------------------------
+'completions'
+Generates and completes text from a single prompt.
+
+- Available Models Endpoint
+---------------------------
+'models'
+List the available models and corresponding data.
+
+- Image Creation Endpoint
+-------------------------
+'images'
+Create and edit images using a text prompt.
+
+- Audio Transcription Endpoint
+------------------------------
+'audio'
+Generates text from a given audio file
+
+- Content Moderation Endpoint
+-----------------------------
+'moderations'
+Analyzes text to see if it violates OpenAI's content policy.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
