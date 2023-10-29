@@ -1,0 +1,113 @@
+* {
+    font-family: var(--font);
+}
+body {
+  background-color: var(--backgroundColor);
+
+  /* This is for VERTICAL ALIGNMENT */
+  display: flex;
+
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.main-container {
+  width: 80vw;
+  height: 80vh;
+  display: block;
+}
+
+
+.prompt-container {
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 5px;
+}
+
+.prompt-container b {
+  color: var(--promptTextColor);
+  margin-bottom: 0px
+}
+
+.flip-card {
+    min-height: 240px;
+    background-color: transparent;
+    border: 1px solid var(--borderColor);
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    cursor: pointer;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    display: grid;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Do a flip when you move the mouse over the flip box container */
+.flip-card.doFlip .flip-card-inner {
+    transform: var(--transform)
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 8px;
+    width: calc(90vw / var(--cardsPerRow));
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    overflow-y: scroll;
+
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
+.flip-card-inner img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.flip-card-front {
+    background-color: var(--cardFrontColor);
+    color: var(--cardTextColor);
+}
+
+.flip-card-back {
+    background-color: var(--cardBackColor);
+    color: var(--cardTextColor);
+    transform: rotateY(180deg);
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(var(--cardsPerRow), auto);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+
+    justify-content: center;
+
+    margin: auto auto;
+    width: 90%;
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+p, h1 {
+    line-height: 1;
+}
+h1 {
+  word-wrap:break-word;
+  font-size: 2.8vw;
+}
