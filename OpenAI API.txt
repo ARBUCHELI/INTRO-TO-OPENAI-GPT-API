@@ -288,6 +288,89 @@ As mentioned, the effects of these penalties can be subtle, but with experience,
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+* Chat and Completions Response
+-------------------------------
+Once we create our input, tune the hyperparameters to guide the output, and send the request to the API, we must be ready to handle the data returned with the response. The two text 
+completion endpoints return a lot of the same data with their responses:
+
+	. id: Identifier unique to each completion
+	-----
+
+	. object: Completion endpoint used
+	---------
+
+	. created: Timestamp of the completion
+	----------
+
+	. model: The model used for the completion
+	--------
+
+	. choices: List of completions, covered in depth below
+	----------
+
+	. usage: Token usage, split up into input, output, and total tokens used
+	--------
+
+* choices List
+--------------
+choices contains a list of text completions. If more than one completion is requested, which is possible in completions, each is listed along with other data. The default request will 
+result in a single completion, and the completion is the only one in the list.
+
+Each endpoint response contains the following data within the choices list:
+
+	. index: The listed completion number starting at 0. This is important for the completions since multiple completions can be requested with that endpoint.
+	--------
+
+	. finish_reason: The reason why the completion finished. The options are:
+	----------------
+		- stop: The completion is done
+		-------
+
+		- length: The completion reached the maximum length of tokens dictated by the request
+		---------
+
+		- function call: A function given in the response is called
+		----------------
+
+		- content filter: The completion was flagged by the OpenAI content policy
+		-----------------
+
+		- null: The completion is not complete or in progress
+		-------
+
+Each endpoint varies on how it formats the actual text completion. Here are the key differences in the completion response format:
+
+	chat/completions
+
+Remember that the chat/completions endpoint request attaches every message to a role. The returned completion is no different:
+
+	. message: Contains an object with role with content parameters:
+	----------
+		- role: This will always be assistant in the response
+		-------
+
+		- content: The completion text
+		----------
+
+This message object can be effectively combined with the user role in the input prompt, creating few-shot prompting for future inputs. This means the completion response can be 
+incorporated as part of ongoing conversation or interaction, allowing for a more interactive and dynamic API use.
+
+. completions
+-------------
+The completions endpoint is a bit more straightforward in its format.
+
+	. text: The completion text
+	-------
+
+	. logprobs: Log probabilities of tokens if a given number was in the request
+	-----------
+
+. Instructions
+--------------
+Here is a JSON representation of the chat/completions and completions responses. Hover over each parameter to review its purpose in the response.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
