@@ -371,7 +371,31 @@ Here is a JSON representation of the chat/completions and completions responses.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+* Summary
+---------
+Congratulations on completing the OpenAI API lesson! LLMs are powerful AI tools, and to harness their power well and create efficient AI applications, it is important to understand how 
+the APIs are used to generate text outputs desired by the user. Knowing the role, functionality, and limitations of the API parameters is also immensely important in the field of prompt 
+engineering.
 
+In this course, we covered the following:
+
+	. The API provides many endpoints with different functionality, including text completion, image generation, and audio transcription.
+
+	. OpenAI has many different models of varying performance and cost attached to different endpoints.
+
+	. Tokens are the pieces of words the models operate on, and model usage cost is based on the number of tokens used.
+
+	. Crafting an input prompt is a trial and error process known as prompt engineering.
+
+	. temperature and top_p are two parameters that control the token probabilities and affect the determinism of the model output.
+
+	. presence_penalty and frequency_penalty are two parameters that affect how varied the output content is, from subtle decreases in repetition to major branches in the output topic.
+
+	. The API response contains the completion text and other information such as id, completion timestamp, finish reason, and token usage.
+
+* Instructions
+--------------
+Use the GPT simulator to discover more about generative AI!
 
 
 
