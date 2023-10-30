@@ -247,6 +247,47 @@ Only a few tokens have larger probabilities with the temperature dial closer to 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+* Token Repetition
+------------------ 
+Another way to manage the output variation is by controlling the repetition of tokens.
+
+The API affords us two hyperparameters that lower the probabilities of tokens already present in the output. These hyperparameters are presence_penalty and frequency_penalty. The effect 
+from each is subtle, but they are used to control the output in very different ways.
+
+* presence_penalty
+------------------
+The entire presence_penalty will be applied to a token’s probability if that token has been selected at least once in the generated output.
+
+Increasing the presence_penalty can make the output branch into new topics related to the initial topic to avoid repeating tokens. This can be useful for research or brainstorming, where 
+you may want the output to produce new topics related to the input.
+
+* frequency_penalty
+-------------------
+The strength of the frequency_penalty corresponds to how often the token already appears in the output. A higher frequency_penalty will reduce the likelihood of repeated words and phrases.
+This is useful if we look for an output with a variety of phrases while staying on topic.
+
+The reduction in probability from these penalties depends on how likely the token was to be chosen initially. There are instances where tokens may still be the optimal choice despite the 
+penalty.
+
+LLMs provide varying outputs given the same input, so observing the effect of both hyperparameters can be a challenge. Getting proficient with these hyperparameters is a great way to 
+guide your output to desired results.
+
+* Instructions
+--------------
+The GPT simulator to the right gives you two options, each with the same text prompt. One of the prompts has no frequency or presence penalty applied, while the other has high penalties 
+applied.
+
+With the given prompt about the Mona Lisa, you will notice that the two outputs cover much of the same content. The output with the higher penalties includes more varying content, such as 
+the inclusion of King Francis I and more focus on attempted thefts.
+
+It is also noticeable that the higher penalty output uses more words to describe similar information to no penalty output. This could be the penalties leaning toward unused tokens to 
+describe the same content.
+
+As mentioned, the effects of these penalties can be subtle, but with experience, you will learn how to apply them to receive the desired output with fewer iterations of inputs.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
