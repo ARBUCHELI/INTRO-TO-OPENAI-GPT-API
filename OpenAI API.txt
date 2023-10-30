@@ -195,6 +195,88 @@ endpoint. Crafting input prompts to get the desired output is known as prompt en
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+* Token Sampling
+----------------
+Large Language Models (LLMs) are built by training neural networks on large volumes of text to learn the probability distributions of the next best word (or token) to choose in a given 
+context. They can use these probabilities to select and combine tokens to create readable output text. A deterministic (less-random) output would be a selection of the higher probability 
+tokens. This text might be very close to the text used in the LLMs training data. Adjusting how these probabilities are sampled can affect the determinism of the completion output.
+
+There are different use cases when adjusting the determinism of your output. You might not have a large sample of lower probability tokens for code completion since there may only be a 
+single solution for a code snippet. In contrast, a more creative task (like requesting a story including quick character and location descriptions) could result in many token 
+probabilities to sample from. A less deterministic output might result in something more random and unexpected.
+
+The API hyperparameters controlling token probability sampling are temperature and top_p.
+
+* temperature
+-------------
+The temperature hyperparameter adjusts how the token probabilities are calculated. The range of this hyperparameter is from 0 up to 2, where a lower temperature is more deterministic, and 
+a higher temperature is less deterministic (or more random).
+
+A lower temperature will squish a probability distribution to have a narrower and taller distribution curve, resulting in a few token probabilities with very high probabilities. This 
+means that outcomes that were already more likely get higher priority, keeping the LLM outputs closer to its training text.
+
+A higher temperature results in flattening a distribution curve, resulting in more token probabilities that are closer in value. This also means that previously less likely outcomes now 
+have a greater chance of being picked!
+
+* top_p
+-------
+The top_p hyperparameter is short for top percentage. The range of this hyperparameter is from 0 up to 2, and it adjusts which portion of the highest token probabilities are sampled. By 
+choosing a certain percentage of the top token probabilities, we directly affect how probable each token is.
+
+For example, look at the following probability distribution of 4 potential tokens:
+
+	. the: 5%
+
+	. to: 5%
+
+	. for: 30%
+
+	. be: 60%
+
+The chance that I select the is 5%, to: 5%, for: 30%, and be: 60%. If we have a top_p of 50%, we use the top two token probabilities in the distribution: for and be. This would change the 
+for and be percentages to 33% and 67%, respectively.
+
+Note: These API hyperparameters should not be adjusted simultaneously. If you would like to affect the determinism of your output, choose only one to adjust.
+
+* Instructions
+--------------
+While a lot is happening within a large language model, token sampling using temperature can best be represented by the probability distribution to the right. Each vertical bar represents 
+a token. The bar’s height is associated with the probability of the token. The taller bars mean a higher token probability.
+
+Only a few tokens have larger probabilities with the temperature dial closer to 0. When the temperature increases toward 1, the token probabilities are more evenly distributed.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
