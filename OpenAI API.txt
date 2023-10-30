@@ -107,6 +107,123 @@ Analyzes text to see if it violates OpenAI's content policy.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+* Models, Tokens and Cost
+-------------------------
+There are many different LLMs available through the OpenAI API. Each model has varying performance and capabilities and can only be accessed through certain API endpoints.
+
+The newer models, such as GPT-3.5 and GPT-4 are available through the chat/completions endpoint, and older models, like text-davinci-002 and text-davinci-003 are available through the 
+completions endpoint.
+
+There are many aspects to the different models available to the API, but one very important measurement is the number of parameters in a model. Not to be confused with hyperparameters, a 
+model’s parameters are the tuned values used by the neural nets in the large language model that allow the model to process the input and generate the output. If you like to think of 
+things in terms of math, you can think of these parameters as weighted coefficients.
+
+OpenAI has hinted that GPT-4 has over 1 trillion parameters, which makes it way bigger than GPT-3.5’s 175 billion parameters.
+
+* Tokens
+--------
+Tokens are words, or pieces of words, and are what LLMs use to parse the given input and generate an output. Each model has a maximum number of tokens it can process, and the cost of 
+using each model is based on the number of tokens in the input prompt and the generated output.
+
+A general rule is that about 750 words equals 1000 tokens. When picking what OpenAI model to use, the cost is given in an amount per 1000 tokens. The most cost-effective model is 
+GPT-3.5-turbo, available through the chat/completions endpoint.
+
+* Cost Analysis
+---------------
+A less expensive model, such as GPT-3.5-turbo, might require more generations of text completions to get close to a desired output. Sometimes, using the costly model will require fewer 
+generations to reach that final product. It might also be the case that using any GenAI at all is more expensive than hiring people to accomplish the same task. This cost analysis is 
+essential to choose the best path forward.
+
+* Instructions
+--------------
+To the right is a table detailing several common text completion models, maximum tokens, costs, and endpoints. There are a few things to note regarding this information:
+
+	. OpenAI is always updating the costs of their models. It is important to reference openai.com/pricing to get updated costs.
+
+	. gpt-3.5-turbo is by far the most cost-efficient model. While it does not have as many parameters as gpt-4, it is considered the best price to performance when using the 
+	chat/completions endpoint.
+	
+	. The text-davinci-003 model is this table’s only completions endpoint model. It is more expensive than gpt-3.5-turbo and has already been marked as “legacy”. This means it will 
+	be replaced with a more efficient model in the near future.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* Input Prompt
+--------------
+LLMs are known for generating text, but it is important to remember that they have to parse the input prompt text to generate the output. The text completion endpoints have different 
+specifications regarding the formats of the input prompts they require:
+
+	. The completions endpoint requires a single input string saved to the prompt parameter.
+
+	. The chat/completions endpoint differs because it allows us to send multiple inputs within the messages parameter. This allows us to set up the chat functionality and perform 
+	few-shot prompting.
+
+* Chat Roles
+------------
+For the chat/completions endpoint, each input requires information on the input’s role and content, where role defines the purpose of the given content. The four roles in the 
+chat/completions prompt are:
+
+	. system: Used once and defines the chatbot’s behavior. This can guide the output toward certain topics.
+	---------
+
+	. user: This role can be used independently as a single prompt similar to the completions endpoint behavior. It can also be used in few-shot prompting. When a user prompt is 
+	-------
+	paired with an assistant prompt, we are giving chat examples and defining how the chat should respond in the future.
+
+	. assistant: Used with the user role to give an example reply to a preceding user input. This is useful for few-shot prompting.
+	------------
+
+	. function: This is a more advanced role to format output for specified function parameters.
+	-----------
+
+* Prompt Engineering
+--------------------
+A well-designed input prompt must be descriptive while efficiently using tokens, whether creating a single input prompt with either endpoint or using few-shot prompting with the chat 
+endpoint. Crafting input prompts to get the desired output is known as prompt engineering. The following are a few strategies to create good prompts:
+
+	. Be Descriptive: Use adjectives and descriptive language to give the model more context on what to output.
+	-----------------
+
+	. Be Specific: Avoid generalizing with words like “a few” and instead use “three”.
+	--------------
+
+	. Define the Output: Ask for the output to be in a certain format, such as JSON or listed out.
+	--------------------
+
+	. Provide an Example: If you have an example of the end result you’re looking for, include it in your prompt.
+	---------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
